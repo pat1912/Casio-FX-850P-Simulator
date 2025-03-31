@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casio FX-850P UI Mockup - HiPER Style 3D Keys with Detailed LCD</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background-color: #282828;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .calculator-body {
+            background-color: #3a3a3a;
+            border: 1px solid #202020;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 780px;
+            color: #e0e0e0;
+        }
+
+        /* Remove branding/power/function labels below LCD */
+        .branding-area, .power-reset-area, .function-key-labels { display: none; }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 20px;
+            padding-top: 10px;
+        }
+
+        .left-section, .right-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* --- Detailed LCD Screen Styling --- */
+        .lcd-screen {
+            background-color: #c8d8c0; /* Greenish LCD */
+            border: 1px solid #252525;
+            border-radius: 4px;
+            padding: 4px 8px; /* Adjusted padding for detailed content */
+            height: 65px; /* Adjusted height for 2 lines + status */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: 'Consolas', 'Menlo', 'Courier New', Courier, monospace; /* Monospace font */
+            color: #000000; /* Black text */
+            overflow: hidden;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.4);
+            margin-bottom: 20px; /* Space below LCD */
+        }
+
+        .status-indicators {
+            font-size: 0.65em; /* Smaller status font */
+            height: 12px; /* Reduced height */
+            color: #333; /* Dim color */
+            display: flex;
+            justify-content: flex-start; /* Align left */
+            align-items: center;
+            padding: 0 2px;
+            font-weight: normal; /* Normal weight */
+            white-space: pre; /* Preserve spacing */
+            letter-spacing: 1px; /* Add spacing between indicators */
+            overflow: hidden; /* Hide overflow */
+        }
+        .status-indicators span.active {
+            color: #000; /* Black for active indicators */
+            font-weight: bold;
+        }
+
+        .lcd-lines-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center lines vertically */
+            padding-top: 2px; /* Small gap from status */
+        }
+
+        .lcd-line {
+            white-space: pre; /* Preserve spaces */
+            line-height: 1.3; /* Adjust line height */
+            font-size: 1.1em; /* Base size for LCD lines */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis if line too long */
+        }
+        /* --- End Detailed LCD Screen Styling --- */
+
+
+        /* Grid container styles */
+        .keyboard-grid,
+        .right-keypad-grid {
+            display: grid;
+            gap: 8px;
+            row-gap: 22px;
+            padding-top: 15px;
+        }
+
+        .keyboard-grid {
+            grid-template-columns: repeat(11, 1fr);
+        }
+
+        .right-keypad-grid {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        /* --- HiPER Key Style (Unchanged) --- */
+        .key {
+            position: relative; background-color: #484848; color: #f0f0f0;
+            border: none; border-radius: 4px; padding: 0; font-size: 0.95em;
+            text-align: center; min-height: 42px; cursor: pointer; font-weight: 500;
+            display: flex; justify-content: center; align-items: center;
+            box-sizing: border-box; overflow: visible; white-space: nowrap;
+            transition: all 0.05s ease-in-out;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 2px 0 rgba(0, 0, 0, 0.5), 0 3px 3px rgba(0, 0, 0, 0.2);
+        }
+        .key:active {
+            background-color: #404040; transform: translateY(1px);
+            box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        .key .secondary {
+            position: absolute; top: -17px; left: 0; right: 0; font-size: 0.7em;
+            color: #ffd700; font-weight: 500; text-align: center; white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis; pointer-events: none;
+        }
+
+        /* --- Specific Key Colors (Unchanged) --- */
+        .key-shift { background-color: #e6bf40; color: #000; font-weight: bold; }
+        .key-shift:active { background-color: #cda030; }
+        .key-del-ac { background-color: #c05050; color: #fff; font-weight: bold; }
+        .key-del-ac:active { background-color: #a04040; }
+        .key-exe { grid-column: span 2; font-weight: bold; }
+
+         /* Empty cells */
+         .empty-cell { visibility: hidden; }
+
+    </style>
+</head>
+<body>
+
+    <div class="calculator-body">
+
+        <div class="main-grid">
+            <!-- Left Section: LCD and QWERTY + Controls -->
+            <div class="left-section">
+                <!-- ** DETAILED LCD CONTENT INSERTED HERE ** -->
+                <div class="lcd-screen">
+                    <div class="status-indicators">
+                        <!-- Replicating status icons from image - Use .active for shown ones -->
+                        <span>WIP</span> <span class="active">CAPS</span> <span>CAL</span> <span class="active">BASIC</span> <span class="active">DEG</span> <span>RAD</span> <span>GRA</span>  <span>MEMO</span> <span>IN</span> <span>EDIT</span> <span class="active">LIB</span> <span class="active">88888</span>  <span class="active">DEFM</span> <span class="active">PRT</span> <span class="active">TR</span> <span class="active">STOP</span>
+                    </div>
+                    <div class="lcd-lines-container">
+                        <!-- Use ≤ for ≤, < for <, <sup> for superscript -->
+                        <div class="lcd-line">Prime factors (2≤Base<(10<sup>10</sup>))</div>
+                        <div class="lcd-line">Base ?</div>
+                    </div>
+                </div>
+                <!-- ** END OF DETAILED LCD CONTENT ** -->
+
+
+                <div class="keyboard-grid">
+                    <!-- Top Control Row (Layout from target image) -->
+                     <div class="empty-cell" style="grid-column: 1 / span 1;"></div>
+                     <button class="key key-shift"><span class="secondary">●</span>CAPS</button> <!-- Yellow CAPS -->
+                     <button class="key"><span class="secondary">DB</span>MEMO</button>
+                     <button class="key"><span class="secondary">HOME</span>↑</button>
+                     <button class="key"><span class="secondary"></span>↓</button>
+                     <button class="key"><span class="secondary">L.TOP</span>←</button>
+                     <button class="key"><span class="secondary">L.END</span>→</button>
+                     <button class="key key-del-ac"><span class="secondary">DEL</span>INS</button> <!-- Red INS -->
+                     <button class="key"><span class="secondary"></span>S</button>
+                     <div class="empty-cell" style="grid-column: 10 / span 2;"></div>
+
+                    <!-- QWERTY Rows (Layout from target image) -->
+                     <button class="key"><span class="secondary">/</span>Q</button>
+                     <button class="key"><span class="secondary">*</span>W</button>
+                     <button class="key"><span class="secondary">#</span>E</button>
+                     <button class="key"><span class="secondary">$</span>R</button>
+                     <button class="key"><span class="secondary">%</span>T</button>
+                     <button class="key"><span class="secondary">&</span>Y</button>
+                     <button class="key"><span class="secondary">'</span>U</button>
+                     <button class="key"><span class="secondary">(</span>I</button>
+                     <button class="key"><span class="secondary">)</span>O</button>
+                     <button class="key"><span class="secondary">^</span>P</button>
+                     <button class="key"><span class="secondary">~</span>ENG</button>
+                      <button class="key"><span class="secondary">GOSUB</span>A</button>
+                     <button class="key"><span class="secondary">RETURN</span>S</button>
+                     <button class="key"><span class="secondary">GOTO</span>D</button>
+                     <button class="key"><span class="secondary">FOR</span>F</button>
+                     <button class="key"><span class="secondary">NEXT</span>G</button>
+                     <button class="key"><span class="secondary">IF</span>H</button>
+                     <button class="key"><span class="secondary">THEN</span>J</button>
+                     <button class="key"><span class="secondary">EDIT</span>K</button>
+                     <button class="key"><span class="secondary">LIST</span>L</button>
+                     <button class="key"><span class="secondary">@</span>=</button>
+                     <button class="key"><span class="secondary">STOP</span>ANS</button>
+                     <button class="key"><span class="secondary">PRINT</span>Z</button>
+                     <button class="key"><span class="secondary">INPUT</span>X</button>
+                     <button class="key key-del-ac"><span class="secondary">CLEAR</span>C</button> <!-- Red C -->
+                     <button class="key"><span class="secondary">DIM</span>V</button>
+                     <button class="key"><span class="secondary">LOAD</span>B</button>
+                     <button class="key"><span class="secondary">SAVE</span>N</button>
+                     <button class="key"><span class="secondary">RUN</span>M</button>
+                     <button class="key"><span class="secondary"><</span>;</button>
+                     <button class="key"><span class="secondary">></span>:</button>
+                     <button class="key"><span class="secondary">?</span>,</button>
+                     <button class="key"><span class="secondary"></span>SPC</button>
+                </div>
+            </div>
+
+            <!-- Right Section: Function/Numeric Keypad (Layout from target image) -->
+            <div class="right-section">
+                 <div class="right-keypad-grid">
+                    <!-- Rows 1-7 Keys (Unchanged from last response, matching target image) -->
+                    <button class="key"><span class="secondary">LIBRARY</span>LIB</button>
+                    <button class="key"><span class="secondary">Function Memory</span>MENU</button>
+                    <button class="key"><span class="secondary"></span>IN</button>
+                    <button class="key"><span class="secondary"></span>OUT</button>
+                    <button class="key"><span class="secondary"></span>CALC</button>
+                    <button class="key"><span class="secondary"></span>MODE</button>
+                     <button class="key"><span class="secondary">10<sup>x</sup></span>log</button>
+                     <button class="key"><span class="secondary">e<sup>x</sup></span>ln</button>
+                     <button class="key"><span class="secondary">SET</span>hyp</button>
+                     <button class="key"><span class="secondary">sin⁻¹</span>sin</button>
+                     <button class="key"><span class="secondary">cos⁻¹</span>cos</button>
+                     <button class="key"><span class="secondary">tan⁻¹</span>tan</button>
+                     <button class="key"><span class="secondary">HEX$</span>&H</button>
+                     <button class="key"><span class="secondary">DMS$</span>DEG(</button>
+                     <button class="key"><span class="secondary">INT</span>(</button>
+                     <button class="key"><span class="secondary">FRAC</span>)</button>
+                     <button class="key"><span class="secondary">x²</span>√</button>
+                     <button class="key"><span class="secondary">FACT</span>←</button>
+                     <button class="key"><span class="secondary">P7</span>7</button>
+                     <button class="key"><span class="secondary">P8</span>8</button>
+                     <button class="key"><span class="secondary">P9</span>9</button>
+                     <button class="key key-del-ac"><span class="secondary">L.CAN</span>BS</button> <!-- Red BS -->
+                     <button class="key key-del-ac"><span class="secondary">ON</span>BRK</button> <!-- Red BRK -->
+                     <div class="empty-cell"></div>
+                     <button class="key"><span class="secondary">P4</span>4</button>
+                     <button class="key"><span class="secondary">P5</span>5</button>
+                     <button class="key"><span class="secondary">P6</span>6</button>
+                     <button class="key"><span class="secondary"></span>*</button>
+                     <button class="key"><span class="secondary"></span>/</button>
+                     <div class="empty-cell"></div>
+                     <button class="key"><span class="secondary">P1</span>1</button>
+                     <button class="key"><span class="secondary">P2</span>2</button>
+                     <button class="key"><span class="secondary">P3</span>3</button>
+                     <button class="key"><span class="secondary">POL(</span>+</button>
+                     <button class="key"><span class="secondary">REC(</span>-</button>
+                     <div class="empty-cell"></div>
+                     <button class="key"><span class="secondary">P0</span>0</button>
+                     <button class="key"><span class="secondary">RAN#</span>.</button>
+                     <button class="key"><span class="secondary">π</span>E</button>
+                     <button class="key key-exe"><span class="secondary"></span>EXE</button>
+                 </div>
+            </div>
+        </div> <!-- End main-grid -->
+
+    </div> <!-- End calculator-body -->
+
+</body>
+</html>
